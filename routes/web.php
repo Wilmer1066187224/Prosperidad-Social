@@ -7,6 +7,7 @@ Route::view('/','homee')->name('homee');
 Route::view('/quienes-somos','about')->name('about');
 
 
+/*Route::get('/portafolio',[ProjectController::class, 'index'])->name('projects.idex')->Middleware('auth');*/
 Route::get('/portafolio',[ProjectController::class, 'index'])->name('projects.idex');
 Route::get('/portafolio/crear',[ProjectController::class, 'create'])->name('projects.create');
 Route::get('/portafolio/{project}/editar',[ProjectController::class, 'edit'])->name('projects.edit');
@@ -23,6 +24,14 @@ Route::view('/contact','contact')->name('contact');
 Route::post('contact',[MenssageController::class,'store'])->name('messages.store'); 
     
 /* Route::resource('/portafolio',PortafolioController::class); */
+Auth::routes(['register'=> false]);/*PARA DESHABILITAR LA VITA DE REGISTRO*/
+
+/*Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -34,3 +43,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');*/

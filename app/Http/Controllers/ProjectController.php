@@ -8,6 +8,12 @@ use App\Models\Project;
 use App\Http\Requests\SaveProjectRequest;
 class ProjectController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index','show');/*el metodo aud bloquea todo exepto index y show*/
+        /* asi se protege el metodo que quieras*/
+
+    } 
     /**
      * Display a listing of the resource.
      *
@@ -42,7 +48,9 @@ class ProjectController extends Controller
      */
     public function store(SaveProjectRequest $request)
     {  
-          
+        return  $request->file('image')->store('images');
+
+
     Project::create($request->validated());   
     return redirect()->route('projects.idex')->with('status','El proyecto fue creado con exito'); 
 /* 

@@ -2,17 +2,25 @@
 
 @section('title','Editar proyecto')
 @section('content')
+<div class="container">
+    <div class="row">
+    <div class="col-12 col-sm-10 col-lg-6 mx-auto">
 
-<h1>Editar proyecto</h1>
+
 @include('partials.session-status')
 @include('partials.valitation-erros')
         
-<form method="POST" action="{{route('projects.update',$project)}}">
+<form class="bg-white py-3  px-4 shadow rounded" method="POST" action="{{route('projects.update',$project)}}">
    @method('PATCH')
+   <h1 class="display-4 mb-4">Editar proyecto</h1>
+ 
    
-@include ('projects.form')
+@include ('projects.form',['btnText'=>'Actualizar'])
 
-<button>Actualizar</button>
 </form>
+</div>
+</div>
+</div>
+
    
 @endsection
