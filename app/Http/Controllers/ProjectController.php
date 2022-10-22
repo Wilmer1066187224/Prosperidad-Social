@@ -37,7 +37,7 @@ class ProjectController extends Controller
     {
         return view('projects.create',[
             'project'=>new Project
-        ]);
+        ]); 
     }
 
     /**
@@ -48,10 +48,19 @@ class ProjectController extends Controller
      */
     public function store(SaveProjectRequest $request)
     {  
-        return  $request->file('image')->store('images');
+        
 
 
-    Project::create($request->validated());   
+   $project = new  Project($request->validated());   
+
+
+   $project -> image = $request->file('image')->store('images');
+
+
+   $project->save();
+
+
+
     return redirect()->route('projects.idex')->with('status','El proyecto fue creado con exito'); 
 /* 
         $fields = request()->validate([
