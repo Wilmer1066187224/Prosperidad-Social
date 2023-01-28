@@ -1,7 +1,17 @@
 
 @csrf 
 
-<div class="custom-file">
+
+                   @if($project->image)
+                      <img class="card-img-top mb-2 " 
+                      style="height:250px; object-fit:cover"
+                       src="{{asset('storage/'.$project->image)}}" 
+                       alt="{{$project->title}}">
+                      @endif
+
+
+
+<div class="custom-file mb-2">
   <input  name="image" type="file" class="custom-file-input" id="customFile">
   <label class="custom-file-label" for="customFile">Choose file</label>
 </div>

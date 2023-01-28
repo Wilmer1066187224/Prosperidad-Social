@@ -4,6 +4,8 @@
 @section('content')
 <div class="container">
 
+
+
 <div class="d-flex justify-content-between align-items-center mb-3">
 <h1 class="display-6 mb-0">Portafolio</h1>
 
@@ -23,17 +25,19 @@
 
                     <div  class="card border-0 shadow-sm mt-4 mx-auto" style="width: 18rem">
                     
+                    
+
                       @if($project->image)
-                      <img class="card-img-top"
-                       src="/storage/{{$project->image}}" 
-                       alt="{{$project-> title}}">
+                      <img class="card-img-top" style="height:150px; object-fit:cover"
+                       src="{{asset('storage/'.$project->image)}}" 
+                       alt="{{$project->title}}">
                       @endif
 
 
                             <div class="card-body">
                               <h5 class="card-title">
                             <a href="{{route('projects.show',$project)}}">
-                              {{$project-> title}}</a>
+                              {{$project->title}}</a>
                               </h5>
                             
                             <h6 class="card-subtitle">{{$project-> created_at->format('d/m/y')}}</h6>

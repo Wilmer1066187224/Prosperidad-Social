@@ -3,6 +3,15 @@
 @section('title','portafolio |' .$project->title)
 @section('content')
 <div class="container">
+
+<div class="row">
+<div class="col-12 col-sm-10 col-lg-8 mx-auto">
+@if($project->image)
+                      <img class="card-img-top"
+                       src="{{asset('storage/'.$project->image)}}" 
+                       alt="{{$project->title}}">
+                      @endif
+
 <div class="bg-white p-5 shadow rounded">
 <h1>{{$project->title}}</h1>
 
@@ -33,6 +42,9 @@ class="d-none"
 </form>
 @endauth
 
+
+</div>
+</div>
 
 </div>
 </div>

@@ -5,7 +5,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\SaveProjectRequest;
+
+
+
 class ProjectController extends Controller
 {
     public function __construct()
@@ -49,15 +54,13 @@ class ProjectController extends Controller
     public function store(SaveProjectRequest $request)
     {  
         
+    $project = new Project($request->validated());   
 
 
-   $project = new  Project($request->validated());   
+    $project->image = $request->file('image')->store('images');
 
 
-   $project -> image = $request->file('image')->store('images');
-
-
-   $project->save();
+    $project->save();
 
 
 
@@ -127,18 +130,46 @@ class ProjectController extends Controller
      */
     public function update(Project $project, SaveProjectRequest $request)
     {
-        $project->update($request->validated());
+
+        if($request->hasfile('image')){//si el request contiene el archivo con el nombre 'image'
+         
+        Storage::delete($project->image);
+
+
+        $project->fill($request->validated());//se vlida 
+
+         $project->image = $request->file('image')->store('images');//asignamos imagen que se sube
+               
+
+        $project->save();//se guarda
+
+
+        $image=Image::make(storage::get($project->image))
+       ->widen(600)
+       ->LimitColors(255)
+       ->encode();
+            
+        Storage::put($project->image, (string) $image);
+
+        }else{
+            
+            $project->update(array_filter($request->validated()));//array_filter para que se actualice los datos y la imagen se mantega
+        }
+
+
         return redirect()->route('projects.show',$project)->with('status','El proyecto fue Actualizado con exito'); 
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specifi,ed resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Project $project)
     {
+        Storage::delete($project->image);//para eliminar imagen del servidor pero no esta acyualmente eliminando 
+
         $project->delete();
         return redirect()->route('projects.idex')->with('status','El proyecto fue Eliminado con exito');
         //Project::destroy($id);

@@ -24,7 +24,7 @@ Route::view('/contact','contact')->name('contact');
 Route::post('contact',[MenssageController::class,'store'])->name('messages.store'); 
     
 /* Route::resource('/portafolio',PortafolioController::class); */
-Auth::routes(['register'=> false]);/*PARA DESHABILITAR LA VITA DE REGISTRO*/
+Auth::routes(['register'=> true]);/*PARA DESHABILITAR LA VITA DE REGISTRO*/
 
 /*Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
