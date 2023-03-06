@@ -42,8 +42,27 @@
                             
                             <h6 class="card-subtitle">{{$project-> created_at->format('d/m/y')}}</h6>
                             <p class="card-text">{{$project-> description}}</p>
-                            <a href="{{route('projects.show',$project)}}"
-                            class="btn btn-primary btn-sm">Ver mas...</a>
+
+
+
+
+
+                            <div class="d-flex  justify-content-between aling-items-start">
+                                        <a href="{{route('projects.show',$project)}}"
+                                        class="btn btn-primary btn-sm">Ver mas...</a>
+                                        
+                            @if($project->category_id)   
+
+                              <a href="#" class="badge bg-secondary">{{$project->category->name}}</a>
+
+                             @endif
+                                       
+                        </div> 
+                    
+
+
+
+                             
                             </div> 
                             </div> 
                    @empty

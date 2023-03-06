@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-
+use Illuminate\Support\Facades\DB;
+use App\Models\Category;
+use App\Events\ProjectSaved;
 use Illuminate\Http\Request;
 use App\Models\Project;
-use Intervention\Image\Facades\Image;
+
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\SaveProjectRequest;
 
@@ -26,12 +28,19 @@ class ProjectController extends Controller
      */
     public function index()
     {
-      $projects = Project::latest()->paginate();                /* $portafolio = DB::table('projects')->get();se lla el metodo get para obtener toodo los datos */
+                   /* $portafolio = DB::table('projects')->get();se lla el metodo get para obtener toodo los datos */
                                                                                  /* $portafolio = Project::orderby('created_at','DESC')->get(); */
-        return view('projects.index',compact('projects')); 
+        return view('projects.index', [
+        'projects' => Project::with('category')->latest()->paginate()
                                                              /* <small>{{$portafolioItem->description}}</small><br>
+               //con el metodo with
+                del modelo category 
+                se elimina el problema n+1
+                por cada proyecto una consulta
+
                                                                                   <small>{{$portafolioItem->created_at->format('d-m-y')}}</small> */
-    }                                                                             
+     ]);  
+    }                                                                          
 
     /**
      * Show the form for creating a new resource.
@@ -41,8 +50,10 @@ class ProjectController extends Controller
     public function create()
     {
         return view('projects.create',[
-            'project'=>new Project
-        ]); 
+            'project'=>new Project,
+            'categories' => Category::pluck('name','id')//pluck solo trae o lo que queremos de la tabla categoories
+         ]);
+         
     }
 
     /**
@@ -61,6 +72,9 @@ class ProjectController extends Controller
 
 
     $project->save();
+
+    ProjectSaved::dispatch($project);
+
 
 
 
@@ -118,7 +132,12 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-    return view('projects.edit',compact('project'));
+
+      
+    return view('projects.edit', [
+   'project' => $project,
+   'categories' => Category::pluck('name','id')//pluck solo trae o lo que queremos de la tabla categoories
+]);
         }
 
     /**
@@ -129,7 +148,9 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Project $project, SaveProjectRequest $request)
-    {
+    { 
+
+     
 
         if($request->hasfile('image')){//si el request contiene el archivo con el nombre 'image'
          
@@ -143,14 +164,8 @@ class ProjectController extends Controller
 
         $project->save();//se guarda
 
-
-        $image=Image::make(storage::get($project->image))
-       ->widen(600)
-       ->LimitColors(255)
-       ->encode();
-            
-        Storage::put($project->image, (string) $image);
-
+        ProjectSaved::dispatch($project);//disparando evento 
+        
         }else{
             
             $project->update(array_filter($request->validated()));//array_filter para que se actualice los datos y la imagen se mantega

@@ -4,13 +4,17 @@
 @section('content')
 <div class="container">
 
+
+
 <div class="row">
 <div class="col-12 col-sm-10 col-lg-8 mx-auto">
 @if($project->image)
-                      <img class="card-img-top"
+                      <img class="card-img-top" style="height:350px; object-fit:cover"
                        src="{{asset('storage/'.$project->image)}}" 
                        alt="{{$project->title}}">
-                      @endif
+ @endif
+
+
 
 <div class="bg-white p-5 shadow rounded">
 <h1>{{$project->title}}</h1>

@@ -1,6 +1,19 @@
 <?php
+
+
+/*DB::listen(function($query){
+var_dump($query->sql);           agregar listener para er consultas sql que genera la aplICACION
+});*/
+
+
+
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\MenssageController;
+use App\Models\Category;
+
+   
+
+
 
 Route::view('/','homee')->name('homee');
 
@@ -51,3 +64,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');*/
+
+/*Route::get('prueba', function(){
+    $category = Category::find(3);
+
+    dd($category->projects);
+
+});*/

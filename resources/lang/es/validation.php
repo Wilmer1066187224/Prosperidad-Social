@@ -174,6 +174,7 @@ return [
         'time'                  => 'hora',
         'subject'               => 'asunto',
         'message'               => 'mensaje',
-        'image'                 => 'imagen'
+        'image'                 => 'imagen',
+        'category_id'            => 'categoria'
     ],
 ];

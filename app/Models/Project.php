@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +14,14 @@ class Project extends Model
 
 
     public function getRouteKeyName()
-{
-    return 'url';
-}
+    {
+        return 'url';
+    }
+
+
+    public function category(){    //cuando tengo un projecto puedo acceder a una categoria
+
+        return $this->belongsTo(Category::class);//tiene una categoria
+
+    }
 }

@@ -533,6 +533,7 @@ class ComposerStaticInit2fab5a7d5e3987edab0b51997d1679ba
 
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Events\\ProjectSaved' => __DIR__ . '/../..' . '/app/Events/ProjectSaved.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -553,7 +554,9 @@ class ComposerStaticInit2fab5a7d5e3987edab0b51997d1679ba
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\SaveProjectRequest' => __DIR__ . '/../..' . '/app/Http/Requests/SaveProjectRequest.php',
+        'App\\Listeners\\optimizeProjecImage' => __DIR__ . '/../..' . '/app/Listeners/optimizeProjecImage.php',
         'App\\Mail\\MessageReceived' => __DIR__ . '/../..' . '/app/Mail/MessageReceived.php',
+        'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Project' => __DIR__ . '/../..' . '/app/Models/Project.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
