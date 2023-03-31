@@ -8,6 +8,7 @@ use App\Events\ProjectSaved;
 use Illuminate\Http\Request;
 use App\Models\Project;
 
+
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\SaveProjectRequest;
 
@@ -31,12 +32,13 @@ class ProjectController extends Controller
                    /* $portafolio = DB::table('projects')->get();se lla el metodo get para obtener toodo los datos */
                                                                                  /* $portafolio = Project::orderby('created_at','DESC')->get(); */
         return view('projects.index', [
-        'projects' => Project::with('category')->latest()->paginate()
-                                                             /* <small>{{$portafolioItem->description}}</small><br>
-               //con el metodo with
-                del modelo category 
-                se elimina el problema n+1
-                por cada proyecto una consulta
+        'newProject'=> new Project, //en la vista index con @Can permisos 
+        'projects' => Project::with('category')->latest()->paginate(),
+        'deletedProjects'=>Project::onlyTrashed()->get()//papelera de reciclaje con modelo y migracion                                                     /* <small>{{$portafolioItem->description}}</small><br>
+                                                                //con el metodo with
+                                                                   /* del modelo category 
+                                                                    se elimina el problema n+1
+                                                                    por cada proyecto una consulta
 
                                                                                   <small>{{$portafolioItem->created_at->format('d-m-y')}}</small> */
      ]);  
@@ -49,11 +51,16 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        $this->authorize('create',$project=new Project);//aplicando politicas para un administrador tenga permisis 
+        
+
+
         return view('projects.create',[
-            'project'=>new Project,
-            'categories' => Category::pluck('name','id')//pluck solo trae o lo que queremos de la tabla categoories
+            'project'=>$project,
+            'categories' => Category::pluck('name','id'),//pluck solo trae o lo que queremos de la tabla categoories
+            
          ]);
-         
+        
     }
 
     /**
@@ -62,10 +69,13 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(SaveProjectRequest $request)
     {  
         
     $project = new Project($request->validated());   
+
+    $this->authorize('create',$project);//Autorizar politicas de usuarios ahut index controler request
 
 
     $project->image = $request->file('image')->store('images');
@@ -124,7 +134,7 @@ class ProjectController extends Controller
 
     /**
      * 
-     * 
+     *  
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -133,7 +143,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
 
-      
+        $this->authorize('update', $project);
+
     return view('projects.edit', [
    'project' => $project,
    'categories' => Category::pluck('name','id')//pluck solo trae o lo que queremos de la tabla categoories
@@ -182,11 +193,31 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Project $project)
-    {
-        Storage::delete($project->image);//para eliminar imagen del servidor pero no esta acyualmente eliminando 
-
-        $project->delete();
-        return redirect()->route('projects.idex')->with('status','El proyecto fue Eliminado con exito');
+    { 
+      $this->authorize('delete', $project);
+      $project->delete();
+      return redirect()->route('projects.idex')->with('status','El proyecto fue Eliminado con exito');
         //Project::destroy($id);
     }
+    public function restore( $projectUrl)
+    { 
+
+        $project=Project::withTrashed()->whereUrl($projectUrl)->firstOrfail();
+        $this->authorize('restore', $project);
+         $project->restore();
+        return redirect()->route('projects.idex')->with('status','El proyecto fue restaurado con exito');
+        //Project::destroy($id);
+    }
+
+     public function forceDelete($projectUrl){  
+
+        $project=Project::withTrashed()->whereUrl($projectUrl)->firstOrfail();
+        $this->authorize('forceDelete', $project);
+        Storage::delete($project->image);//para eliminar imagen del servidor pero no esta acyualmente eliminando
+        $project->forceDelete();
+        return redirect()->route('projects.idex')->with('status','El proyecto fue Eliminado permanentemente');
+        //Project::destroy($id);
+
+    }
 }
+

@@ -25,6 +25,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+     Gate::define('view-deleted-projects',function ($user){
+       return $user->role==='admin';
+      });// se crea una puerta
+    
+   
     }
 }

@@ -7,11 +7,21 @@
 
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-<h1 class="display-6 mb-0">Portafolio</h1>
 
-                     @auth
+  @isset($category)
+  <div>
+<h1 class="display-6 mb-0">{{$category->name}}</h1>
+
+<a href="{{route('projects.idex')}}">Regresar al portafolio</a>
+</div>
+ @else
+<h1 class="display-6 mb-0">Portafolio</h1>
+@endisset
+                     @can('create',$newProject)
                      <a class="btn btn-primary" href="{{route('projects.create')}}">Crear Proyecto</a>
-                     @endauth 
+                     @endcan
+
+                     
                      </div>
               <p class="load text-secondary">Proyecto realizados Lorem ipsum,
                dolor sit amet consectetur adipisicing elit. </p>
@@ -53,18 +63,14 @@
                                         
                             @if($project->category_id)   
 
-                              <a href="#" class="badge bg-secondary">{{$project->category->name}}</a>
+                              <a href= "{{route('categories.show',$project->category)}}"
+                                 class="badge bg-secondary">{{$project->category->name}}</a>
 
                              @endif
                                        
-                        </div> 
-                    
-
-
-
-                             
-                            </div> 
-                            </div> 
+                        </div>
+                      </div> 
+                    </div> 
                    @empty
 
                    <div class="card">
@@ -78,10 +84,39 @@
                    </div>
 
                    <div class="mt-4">   
-            {{$projects->links()}}
+       {{$projects->links()}}
             
            
        
       </div>
+      @can('view-deleted-projects')
+        
+      <h4>Papelera</h4>
+      <ul class="list-group">
+        @foreach ($deletedProjects as $deletedProject )
+          <li>{{$deletedProject->title}}
+
+            @can('restore', $deletedProject)
+            <form method="POST" action="{{route('projects.restore',$deletedProject)}}" class="d-inline">
+              @csrf @method('PATCH')
+            <button class="btn-sm btn-info">Restaurar</button>
+          </form>
+            @endcan
+
+            @can('forceDelete', $deletedProject)
+            <form method="POST" 
+              onsubmit="return confirm('esta accion no se puede deshacer,estas seguro de eliminar el proyecto?')"
+              action="{{route('projects.forceDelete',$deletedProject)}}"class="d-inline">
+              @csrf @method('DELETE')
+            <button class="btn-sm btn-danger">Eliminar </button>
+          </form>
+            @endcan
+            
+          </li>
+        @endforeach
+
+
+      </ul>
+      @endcan
     </div>
 @endsection
