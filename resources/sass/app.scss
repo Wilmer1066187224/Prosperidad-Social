@@ -7,10 +7,25 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-
-
-   
- .h-screen{
-height: 100vh;
-
- }
+/* Aplica el color amarillo cuando el enlace está activo */
+.navbar-nav .nav-link.active {
+    color: yellow !important;
+    text-decoration: none;
+  }
+  
+  /* Si quieres que el color de los enlaces sea normal en el estado no activo */
+  .navbar-nav .nav-link {
+    color: #000; /* Cambia a otro color si lo prefieres, por ejemplo, negro */
+  }
+  
+  /* También puedes agregar un estilo para cuando el usuario pasa el mouse por encima del enlace */
+  .navbar-nav .nav-link:hover {
+    color: yellow;
+    text-decoration: none;
+  }
+  
+.nav-link.active {
+    color: yellow !important;
+    font-weight: bold;
+    text-decoration: none;
+}

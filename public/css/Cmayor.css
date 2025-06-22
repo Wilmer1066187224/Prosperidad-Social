@@ -1,0 +1,22 @@
+.fondo-impactante {
+    background: linear-gradient(to right, rgb(255, 252, 65), rgb(255, 216, 43));
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    padding: 30px 15px;
+    text-align: center;
+
+    /* 🔼 Subir más el fondo */
+    margin-top: 0 !important;
+    position: relative;
+    top: -40px; /* Puedes ajustar este valor a -80px, -100px, etc. */
+
+}
+.carrusel-subido {
+    margin-top: -50px; /* Ajusta según te guste */
+}
+.carousel-inner img {
+    object-fit: cover;
+    height: 400px; /* Puedes ajustar este valor */
+    border-radius: 15px;
+}

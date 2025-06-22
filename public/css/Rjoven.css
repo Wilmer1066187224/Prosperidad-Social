@@ -1,0 +1,56 @@
+.fondo-impactante {
+    background: linear-gradient(to right, rgb(255, 252, 65), rgb(255, 216, 43));
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    padding: 30px 15px;
+    text-align: center;
+
+    /* 🔼 Subir más el fondo */
+    margin-top: 0 !important;
+    position: relative;
+    top: -40px; /* Puedes ajustar este valor a -80px, -100px, etc. */
+
+}
+.carrusel-subido {
+    margin-top: -50px; /* Ajusta según te guste */
+}
+.btn-impactante {
+    background: linear-gradient(45deg, #ffdd00, #ffd000); /* amarillo brillante */
+    color: #222; /* texto oscuro para contraste */
+    font-weight: bold;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(255, 221, 0, 0.6);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-impactante:hover {
+    background: linear-gradient(45deg, #fff200, #ffcc00);
+    box-shadow: 0 8px 20px rgba(255, 221, 0, 0.8);
+    transform: scale(1.05);
+    color: #000;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    max-height: 500px; /* Ajusta según el diseño */
+    object-fit: contain;
+}
+/* Establece una altura fija para el contenedor del carrusel */
+.carousel-inner {
+    height: 400px; /* Puedes ajustar a 450px, 500px, etc. */
+}
+
+/* Fuerza que todas las imágenes se ajusten al tamaño definido */
+.carousel-inner .carousel-item img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; /* Rellena el área sin deformar */
+    border-radius: 15px; /* Coincide con rounded-3 */
+}
+

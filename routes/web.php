@@ -10,6 +10,7 @@ var_dump($query->sql);           agregar listener para er consultas sql que gene
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\MenssageController;
+use App\Http\Controllers\RentaController;
 
 use App\Models\Category;
 
@@ -24,7 +25,14 @@ Route::view('/quienes-somos','about')->name('about');
 
 
 /*Route::get('/portafolio',[ProjectController::class, 'index'])->name('projects.idex')->Middleware('auth');*/
-Route::get('/portafolio',[ProjectController::class, 'index'])->name('projects.idex');
+Route::get('/Cronogramas',[ProjectController::class, 'index'])->name('projects.idex');
+Route::get('/renta', [RentaController::class, 'index'] )->name('projects.renta');
+Route::get('/rentajoven', [RentaController::class, 'rentajoven'] )->name('projects.rentajoven');
+Route::get('/colombiamayor',[RentaController::class, 'colombiamayor'])->name('projects.colombiamayor');
+Route::get('/novedades',[RentaController::class, 'novedades'])->name('projects.Novedades');
+Route::get('/inclusion',[RentaController::class, 'inclusion'])->name('projects.Inclusion');
+
+
 
 
 

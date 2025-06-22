@@ -15,7 +15,7 @@
 <a href="{{route('projects.idex')}}">Regresar al portafolio</a>
 </div>
  @else
-<h1 class="display-6 mb-0">Portafolio</h1>
+<h1 class="display-6 mb-0">Cronogramas De Pagos</h1>
 @endisset
                      @can('create',$newProject)
                      <a class="btn btn-primary" href="{{route('projects.create')}}">Crear Proyecto</a>
@@ -23,8 +23,7 @@
 
                      
                      </div>
-              <p class="load text-secondary">Proyecto realizados Lorem ipsum,
-               dolor sit amet consectetur adipisicing elit. </p>
+              <p class="load text-secondary">Mantenerte al día de pagos y todo tipo de eventos es la mejor manera de transformar la calidad de  vida para todos los habitantes! </p>
            
 @include('partials.session-status')
 
@@ -35,13 +34,12 @@
 
                     <div  class="card border-0 shadow-sm mt-4 mx-auto" style="width: 18rem">
                     
-                    
-
-                      @if($project->image)
-                      <img class="card-img-top" style="height:150px; object-fit:cover"
-                       src="{{asset('storage/'.$project->image)}}" 
-                       alt="{{$project->title}}">
-                      @endif
+                                      
+                                  @if($project->image)
+                                     <img class="card-img-top" style="height:150px; object-fit:cover"
+                                      src="{{asset('storage/'.$project->image)}}" 
+                                     alt="{{$project->title}}">
+                                  @endif
 
 
                             <div class="card-body">
@@ -61,12 +59,12 @@
                                         <a href="{{route('projects.show',$project)}}"
                                         class="btn btn-primary btn-sm">Ver mas...</a>
                                         
-                            @if($project->category_id)   
+                            <!-- @if($project->category_id)   
 
                               <a href= "{{route('categories.show',$project->category)}}"
                                  class="badge bg-secondary">{{$project->category->name}}</a>
 
-                             @endif
+                             @endif -->
                                        
                         </div>
                       </div> 
@@ -91,7 +89,7 @@
       </div>
       @can('view-deleted-projects')
         
-      <h4>Papelera</h4>
+  <h4><i class="fas fa-trash-alt me-2 text-danger"></i> Papelera</h4>
       <ul class="list-group">
         @foreach ($deletedProjects as $deletedProject )
           <li>{{$deletedProject->title}}
@@ -99,17 +97,17 @@
             @can('restore', $deletedProject)
             <form method="POST" action="{{route('projects.restore',$deletedProject)}}" class="d-inline">
               @csrf @method('PATCH')
-            <button class="btn-sm btn-info">Restaurar</button>
+            <button class="btn btn-sm btn-info"><i class="fas fa-undo-alt me-1"></i>Restaurar</button>           
           </form>
             @endcan
 
             @can('forceDelete', $deletedProject)
             <form method="POST" 
-              onsubmit="return confirm('esta accion no se puede deshacer,estas seguro de eliminar el proyecto?')"
+              onsubmit="return confirm('Esta acción no se puede deshacer,estás seguro de eliminar el proyecto?')"
               action="{{route('projects.forceDelete',$deletedProject)}}"class="d-inline">
               @csrf @method('DELETE')
-            <button class="btn-sm btn-danger">Eliminar </button>
-          </form>
+            <button class="btn btn-sm btn-danger"><i class="fas fa-trash me-1"></i> Eliminar</button>
+            </form>
             @endcan
             
           </li>

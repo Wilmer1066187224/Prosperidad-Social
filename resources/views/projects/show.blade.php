@@ -11,9 +11,9 @@
 
 
 @if($project->image)
-                      <img class="card-img-top" style="height:350px; object-fit:cover"
-                       src="{{asset('storage/'.$project->image)}}" 
-                       alt="{{$project->title}}">
+   <img class="card-img-top" style="height:350px; object-fit:cover"
+   src="{{asset('storage/'.$project->image)}}" 
+   alt="{{$project->title}}">
  @endif
 
 
@@ -21,12 +21,12 @@
 <div class="bg-white p-5 shadow rounded">
 <h1 class="mb-0">{{$project->title}}</h1>
 
-@if($project->category_id)   
+<!-- @if($project->category_id)   
 
 <a href= "{{route('categories.show',$project->category)}}"
    class="badge bg-secondary mb-1">{{$project->category->name}}</a>
 
-@endif
+@endif -->
 
 
 <p class="text-secondary">{{$project->description}}</p>
@@ -41,26 +41,24 @@
 <div class="btn-group btn-group-sm">
 
 @can('update', $project)
-<a class="btn btn-primary" href="{{route('projects.edit',$project)}}">Editar</a>
+<a class="btn btn-primary btn-sm" href="{{ route('projects.edit', $project) }}">
+    <i class="fas fa-edit me-1"></i> Editar
+</a>
 @endcan
 
             @can('delete', $project)
-               
-
-            <a class="btn btn-danger" href="#"
-                     onclick="document.getElementById
-                     ('delete-project').submit()">
-                     Eliminar</a>
- 
-                     @can('delete', $project)
+                <a class="btn btn-danger btn-sm" href="#"
+                 onclick="event.preventDefault(); document.getElementById('delete-project').submit();">
+                  <i class="fas fa-trash-alt me-1"></i> Eliminar
+                     </a>
+                       @can('delete', $project)
                      <form id="delete-project"
                         class="d-none"
                         method="POST" action="{{route('projects.destroy',$project)}}">
                            @csrf @method('delete')
-            
-            </form>
-            @endcan
-            @endcan
+                        </form>          
+                      @endcan
+                      @endcan
 </div>
 
 

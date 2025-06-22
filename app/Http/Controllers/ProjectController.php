@@ -73,6 +73,7 @@ class ProjectController extends Controller
     public function store(SaveProjectRequest $request)
     {  
         
+        
     $project = new Project($request->validated());   
 
     $this->authorize('create',$project);//Autorizar politicas de usuarios ahut index controler request

@@ -1,0 +1,15 @@
+ .carousel-item img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .carousel-item {
+      max-height: 500px; /* o ajusta según lo que desees */
+    }
+
+    .carousel-caption {
+      background: rgba(241, 238, 238, 0.822); 
+      padding: 10px;
+      border-radius: 10px;
+    } 

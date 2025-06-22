@@ -37,7 +37,7 @@ class SaveProjectRequest extends FormRequest
           
                 'image'=> 
                 $this->route('project') ? "nullable" : 'required',
-                'mimes: jpg,png,webp', 
+                'mimes: jpg,png,webp,jpeg.ico', 
                      //MIME TYPE 'image' jpg,png,bmp,git,svg, o webp.
                 'description'=> 'required'  
              
