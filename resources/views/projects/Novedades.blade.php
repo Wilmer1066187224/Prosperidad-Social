@@ -190,6 +190,32 @@
         </div>
     </div>
 </div>
+ <style>
+.btn-orange {
+    background-color: #fd7e14 !important;
+    color: white !important;
+    border: none;
+}
+
+.btn-orange:hover {
+    background-color: #e66a00 !important;
+    color: white !important;
+}
+</style>
+
+   <!-- Botón para regresar -->
+<div class="text-center mt-4">
+    <a href="{{ route('projects.rentajoven') }}" class="btn btn-warning btn-lg rounded-pill shadow">
+        <i class="bi bi-arrow-left-circle me-2"></i> Volver a Renta Joven
+    </a>
+</div>
+<div class="text-center mt-3">
+    <a href="{{ route('projects.idex') }}" class="btn btn-orange btn-lg rounded-pill shadow text-white">
+        <i class="bi bi-clock-history me-2"></i> Ir al Cronograma de Pagos
+    </a>
+</div>
+
+
 </div>
 
 

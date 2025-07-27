@@ -20,6 +20,11 @@ class RentaController extends Controller
     return view('projects.colombiamayor');
   }
 
+ public function devolucioniva(){
+    return view('projects.devolucioniva');
+  }
+  
+
   public function novedades(){
     return view('projects.Novedades');
   }
@@ -27,4 +32,13 @@ class RentaController extends Controller
      return view('projects.Inclusion');
 
   }
+public function ColmayorNovedades(){
+     return view('projects.colmayorNovedades');
+
+  }
+  public function ColmayorInclusion(){
+     return view('projects.colmayorInclusion');
+
+  }
+
 }

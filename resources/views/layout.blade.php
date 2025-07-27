@@ -53,40 +53,79 @@
    <footer class="bg-dark text-white py-4">
     <div class="container">
         <div class="row">
-            <!-- Sección de contacto -->
-            <div class="col-md-4">
-                <h5>Contacto</h5>
-                <ul class="list-unstyled">
-                    <li><i class="bi bi-envelope"></i> Email: Prosperidadsocialchinu2025@gmail.com</li>
-                    <li><i class="bi bi-telephone"></i> Teléfono: +57 300 123 4567</li>
-                    <li><i class="bi bi-geo-alt"></i> Dirección: Calle 16, Chinú, Córdoba, Colombia</li>
-                </ul>
+           <div class="container py-4">
+    <div class="row text-white text-center text-md-start">
+
+        <!-- Sección de contacto -->
+        <div class="col-md-4 mb-4">
+            <h5 class="text-uppercase fw-bold mb-3">Contacto</h5>
+            <ul class="list-unstyled">
+                <li class="mb-2">
+                    <i class="bi bi-envelope me-2 fs-5"></i>
+                    Prosperidadsocialchinu2025@gmail.com
+                </li>
+                <li class="mb-2">
+                    <i class="bi bi-telephone me-2 fs-5"></i>
+                    +57 300 123 4567
+                </li>
+                <li>
+                    <i class="bi bi-geo-alt me-2 fs-5"></i>
+                    Calle 16, Chinú, Córdoba, Colombia
+                </li>
+            </ul>
+        </div>
+
+        <!-- Sección de información -->
+        <div class="col-md-4 mb-4">
+            <h5 class="text-uppercase fw-bold mb-3">Información</h5>
+            <ul class="list-unstyled">
+                <li class="mb-2">
+                    <i class="bi bi-building me-2 fs-5"></i>
+                    <a href="https://www.chinu-cordoba.gov.co/Paginas/Inicio.aspx"
+                       class="text-white text-decoration-none"
+                       target="_blank" rel="noopener noreferrer">
+                        Alcaldía de Chinú
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <i class="bi bi-file-earmark-text me-2 fs-5"></i>
+                    <a href="#" class="text-white text-decoration-none" target="_blank" rel="noopener noreferrer">
+                        Términos y Condiciones
+                    </a>
+                </li>
+                <li>
+                    <i class="bi bi-shield-lock me-2 fs-5"></i>
+                    <a href="#" class="text-white text-decoration-none" target="_blank" rel="noopener noreferrer">
+                        Política de Privacidad
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Sección de redes sociales -->
+        <div class="col-md-4 mb-4">
+            <h5 class="text-uppercase fw-bold mb-3">Síguenos</h5>
+            <div class="d-flex flex-column align-items-md-start align-items-center">
+                <a href="https://www.facebook.com/profile.php?id=61561879125922"
+                   class="text-white mb-2 d-flex align-items-center"
+                   target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-facebook me-2 fs-5"></i> Facebook
+                </a>
+                <a href="https://www.instagram.com/rentaciudadana_chinu"
+                   class="text-white mb-2 d-flex align-items-center"
+                   target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-instagram me-2 fs-5"></i> Instagram
+                </a>
+                <a href="https://wa.me/573001234567"
+                   class="text-white d-flex align-items-center"
+                   target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-whatsapp me-2 fs-5"></i> WhatsApp
+                </a>
             </div>
-            <!-- Sección de información -->
-            <div class="col-md-4">
-                <h5>Información</h5>
-                <ul class="list-unstyled">
-                    <li><a href="https://www.chinu-cordoba.gov.co/Paginas/Inicio.aspx" class="text-white text-decoration-none">Alcaldia de Chinú</a></li>
-                    <li><a href="" class="text-white text-decoration-none">Términos y Condiciones</a></li>
-                    <li><a href="" class="text-white text-decoration-none">Política de Privacidad</a></li>
-                </ul>
-            </div>
-            <!-- Sección de redes sociales -->
-            <div class="col-md-4">
-    <h5>Síguenos</h5>
-    <div class="d-flex flex-column">
-        <a href="https://www.facebook.com/profile.php?id=61561879125922" class="text-white mb-2">
-            <i class="bi bi-facebook"></i> Facebook
-        </a>
-        <a href="https://www.instagram.com/rentaciudadana_chinu" class="text-white mb-2" target="_blank">
-            <i class="bi bi-instagram"></i> Instagram
-        </a>
-        <a href="https://wa.me/573001234567" class="text-white">
-            <i class="bi bi-whatsapp"></i> WhatsApp
-        </a>
+        </div>
+
     </div>
-    
-     </div>
+</div>
 
         
     

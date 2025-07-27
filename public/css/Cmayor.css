@@ -20,3 +20,20 @@
     height: 400px; /* Puedes ajustar este valor */
     border-radius: 15px;
 }
+.btn-orange {
+    background-color: #f2994a; /* Naranja suave */
+    color: white !important;   /* Asegura que el texto sea blanco */
+    border: none;
+}
+
+.btn-orange {
+    background-color: #f2994a; /* Naranja vibrante */
+    color: white !important;
+    border: none;
+}
+
+.btn-orange:hover {
+    background-color: #e98929;
+    color: white !important;
+}
+

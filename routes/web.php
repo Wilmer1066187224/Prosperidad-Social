@@ -31,6 +31,9 @@ Route::get('/rentajoven', [RentaController::class, 'rentajoven'] )->name('projec
 Route::get('/colombiamayor',[RentaController::class, 'colombiamayor'])->name('projects.colombiamayor');
 Route::get('/novedades',[RentaController::class, 'novedades'])->name('projects.Novedades');
 Route::get('/inclusion',[RentaController::class, 'inclusion'])->name('projects.Inclusion');
+Route::get('/colmnovedades',[RentaController::class, 'ColmayorNovedades'])->name('projects.colmayorNovedades');
+Route::view('/contacto', 'contact')->name('contact');
+Route::get('/devolucioniva',[RentaController::class, 'devolucioniva'])->name('projects.devolucioniva');
 
 
 

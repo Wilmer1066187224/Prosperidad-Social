@@ -53,4 +53,13 @@
     object-fit: cover; /* Rellena el área sin deformar */
     border-radius: 15px; /* Coincide con rounded-3 */
 }
+.fondo-impactante {
+    background-color: #ffeb3b; /* o el color que estés usando */
+    padding: 30px;
+    text-align: center;
+    border-radius: 50px; /* BORDES MÁS REDONDOS */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Sombra elegante */
+}
+
+
 
